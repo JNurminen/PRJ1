@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
@@ -11,6 +11,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///contacts.db' # Tietokannan ni
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Estetään turhat varoitukset
 
 db = SQLAlchemy(app) # Luodaan tietokanta
+
+import routes # Tuodaan routes-moduuli, jotta reitit saadaan käyttöön
+
+with app.app_context():
+    db.create_all() # Luodaan tietokantataulut, jos niitä ei ole olemassa
 
 if __name__ == '__main__':
     app.run(debug=True) # Käynnistetään sovellus
