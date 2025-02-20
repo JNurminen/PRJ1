@@ -1,5 +1,6 @@
 import React from "react";
 
+// ContactList komponentti renderöi yhteystiedot taulukkona
 const ContactList = ({ contacts }) => {
     return <div>
         <h2>Contacts</h2>
