@@ -1,11 +1,13 @@
 import { useState } from "react";
 
 // ContactForm komponentti
-const ContactForm = ({ addContact }) => {
+const ContactForm = ({ existingContact = {}, updateCallback}) => { // Propsit existingContact ja updateCallback
   // useState hookilla luodaan tilat muuttujille
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [name, setName] = useState(existingContact.name || ""); // Asetetaan oletusarvot existingContact muuttujalle
+  const [email, setEmail] = useState(existingContact.email || ""); // Asetetaan oletusarvot existingContact muuttujalle
+  const [phone, setPhone] = useState(existingContact.phone || ""); // Asetetaan oletusarvot existingContact muuttujalle
+
+  const updating = Object.entries(existingContact).length !== 0; // Jos existingContact muuttujalla on arvoja, niin updating muuttuja saa arvon true
 
     // onSubmit funktiolla lisätään uusi yhteystieto
     const onSubmit = async (e) => {
@@ -17,9 +19,9 @@ const ContactForm = ({ addContact }) => {
             email: email,
             phone: phone
         }
-        const url = "http://localhost:5000/api/contacts" // Tietokannan osoite
+        const url = "http://localhost:5000/api/contacts" + (updating ? `/${existingContact.id}` : "") // Jos updating on true, niin lisätään id osoitteeseen
         const options = { // Asetetaan fetch asetukset
-            method: "POST", // POST metodi
+            method: updating ? "PATCH" : "POST", // POST metodi
             headers: {
                 "Content-Type": "application/json" 
             },
@@ -30,7 +32,7 @@ const ContactForm = ({ addContact }) => {
             const data = await response.json() // Muutetaan vastaus JSON muotoon
             alert(data.message) // Ilmoitetaan käyttäjälle virheestä
         } else {
-            // sucess
+            updateCallback() // Kutsutaan updateCallback funktiota
         }
     }
 
@@ -48,7 +50,7 @@ const ContactForm = ({ addContact }) => {
         <label htmlFor="phone">Phone:</label>
         <input type="tel" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
     </div>
-    <button type="submit">Create Contact</button>
+    <button type="submit">{updating ? "Update" : "Create"}</button>
   </form>
     );
 }

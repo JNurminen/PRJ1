@@ -7,6 +7,7 @@ import ContactForm from './ContactForm'
 function App() {
   const [contacts, setContacts] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [currentContact, setCurrentContact] = useState({})
 
   useEffect(() => {
     getContacts()
@@ -21,28 +22,42 @@ function App() {
     setContacts(data) // Asetetaan yhteystiedot stateen
   }
 
+  // closeModal funktiolla suljetaan modaalinen ikkuna
   const closeModal = () => {
     setIsModalOpen(false)
+    setCurrentContact({})
   }
 
+  // openCreateModal funktiolla avataan modaalinen ikkuna 
   const openCreateModal = () => {
     if (!isModalOpen) setIsModalOpen(true)
   }
 
+  // openEditModal funktiolla avataan modaalinen ikkuna ja asetetaan yhteystiedot stateen
+  const openEditModal = (contact) => {
+    if (isModalOpen) return
+    setCurrentContact(contact)
+    setIsModalOpen(true)
+  }
 
+  // onUpdate funktiolla suljetaan modaalinen ikkuna ja haetaan yhteystiedot tietokannasta
+  const onUpdate = () => {
+    closeModal()
+    getContacts()
+  }
+
+  // App funktio renderöi yhteystiedot ja modaalisen ikkunan
   return (
     <>
-      <ContactList contacts={contacts} />
+      <ContactList contacts={contacts} updateContact={openEditModal} updateCallback={onUpdate} />
       <button onClick={openCreateModal}>Create Contact</button>
       { isModalOpen && <div className="modal">
       <div className="modal-content">
         <span className="close" onClick={closeModal}>&times;</span>
-        <ContactForm />
+        <ContactForm existingContact={currentContact} updateCallback={onUpdate} />
       </div>
-
       </div>
-  }
-      
+    }      
     </>
   )
 }
