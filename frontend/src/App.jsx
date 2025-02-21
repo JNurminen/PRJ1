@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import ContactList from './ContactList' // Tuodaan ContactList komponentti
 import './App.css'
 import ContactForm from './ContactForm'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer, toast } from 'react-toastify'
 
 // App funktiolla haetaan yhteystiedot tietokannasta ja asetetaan ne stateen
 function App() {
@@ -41,9 +43,10 @@ function App() {
   }
 
   // onUpdate funktiolla suljetaan modaalinen ikkuna ja haetaan yhteystiedot tietokannasta
-  const onUpdate = () => {
+  const onUpdate = (message) => {
     closeModal()
     getContacts()
+    toast.success(message)
   }
 
   // App funktio renderöi yhteystiedot ja modaalisen ikkunan
@@ -51,13 +54,15 @@ function App() {
     <>
       <ContactList contacts={contacts} updateContact={openEditModal} updateCallback={onUpdate} />
       <button onClick={openCreateModal}>Create Contact</button>
-      { isModalOpen && <div className="modal">
+      { isModalOpen && 
+      <div className="modal">
       <div className="modal-content">
         <span className="close" onClick={closeModal}>&times;</span>
-        <ContactForm existingContact={currentContact} updateCallback={onUpdate} />
+        <ContactForm existingContact={currentContact}  updateCallback={() => onUpdate(currentContact.id ? 'Contact updated successfully!' : 'New contact created successfully!')} />
       </div>
       </div>
-    }      
+    }   
+    <ToastContainer />   
     </>
   )
 }

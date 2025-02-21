@@ -6,10 +6,10 @@ const ContactList = ({ contacts, updateContact, updateCallback }) => {
         try { // Yritetään suorittaa seuraavaa
             const url = `http://localhost:5000/api/contacts/${id}` // Tietokannan osoite
             await fetch(url, { method: 'DELETE' }) // fetch pyyntö
-            updateCallback() // Päivitetään yhteystiedot
+            updateCallback('Contact deleted successfully!') // Päivitetään yhteystiedot
         }
         catch (err) { // Jos yllä oleva ei onnistu, tulostetaan virheilmoitus konsoliin
-            console.error(err) // Tulostetaan virheilmoitus konsoliin
+            console.error("Failed to delete") // Tulostetaan virheilmoitus konsoliin
         }
     }
 
