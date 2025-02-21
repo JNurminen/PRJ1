@@ -15,8 +15,11 @@ def get_contacts(): # Funktio, joka suoritetaan, kun selain tekee GET-pyynnön o
 def create_contact():
     try: # Yritetään suorittaa seuraava koodi
         data = request.get_json()
-        if not data or 'name' not in data or 'email' not in data or 'phone' not in data: # Tarkistetaan, että pyynnön mukana tulee nimi, sähköposti ja puhelinnumero
-            return jsonify({'error': 'Bad Request', 'message': 'Name, email and phone are required'}), 400 # Palautetaan virheilmoitus ja statuskoodi 400, jos jokin tiedoista puuttuu
+        
+        required_fields = ["name", "email", "phone"] # Määritellään pakolliset kentät
+        for field in required_fields: # Käydään läpi kaikki pakolliset kentät
+            if field not in data or not data.get(field): # Jos jokin pakollinen kenttä puuttuu tai sen arvo on tyhjä
+                return jsonify({"error":f'Missing required field: {field}'}) # Palautetaan virheilmoitus ja statuskoodi 400, jos jokin tiedoista puuttuu
         
         new_contact = Contact(name=data['name'], email=data['email'], phone=data['phone']) # Luodaan uusi Contact-olio
         db.session.add(new_contact) # Lisätään uusi olio tietokantaan
