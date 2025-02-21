@@ -1,6 +1,7 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 # Luodaan Flask-sovellus
 app = Flask(__name__)
@@ -11,6 +12,17 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///contacts.db' # Tietokannan ni
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Estetään turhat varoitukset
 
 db = SQLAlchemy(app) # Luodaan tietokanta
+
+frontend_folder = os.path.join(os.getcwd(),"..","frontend")
+dist_folder = os.path.join(frontend_folder,"dist")
+
+# Määritellään reitti, joka palauttaa frontendin
+@app.route("/",defaults={"filename":""})
+@app.route("/<path:filename>")
+def index(filename):
+  if not filename:
+    filename = "index.html"
+  return send_from_directory(dist_folder,filename)
 
 import routes # Tuodaan routes-moduuli, jotta reitit saadaan käyttöön
 
