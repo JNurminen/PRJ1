@@ -53,7 +53,7 @@ function App() {
   return (
     <>
       <ContactList contacts={contacts} updateContact={openEditModal} updateCallback={onUpdate} />
-      <button onClick={openCreateModal}>Create Contact</button>
+      <button className="create-button" onClick={openCreateModal}>Create Contact</button>
       { isModalOpen && 
       <div className="modal">
       <div className="modal-content">

@@ -50,7 +50,9 @@ const ContactForm = ({ existingContact = {}, updateCallback}) => { // Propsit ex
         <label htmlFor="phone">Phone:</label>
         <input type="tel" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
     </div>
-    <button type="submit">{updating ? "Update" : "Create"}</button>
+    <button type="submit" className={updating ? "update-button" : "create-button"}>
+        {updating ? "Update" : "Create"}
+      </button>
   </form>
     );
 }

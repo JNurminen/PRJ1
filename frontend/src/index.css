@@ -28,8 +28,7 @@ input, button, label {
   }
   
   button {
-    background-color: gray;
-    color: #fff;
+    color: #f0f0f5;
     border: 0;
     padding: 10px 15px;
     border-radius: 5px;
@@ -39,6 +38,31 @@ input, button, label {
   button:hover {
     background-color: #333;
   }
+
+  .create-button {
+    background-color: green;
+  }
+
+  .create-button:hover {
+    background-color: darkgreen;
+  }
+
+  .delete-button {
+    background-color: red;
+  }
+
+  .delete-button:hover {
+    background-color: darkred;
+  }
+
+  .update-button {
+    background-color: blue;
+  }
+
+  .update-button:hover {
+    background-color: darkblue;
+  }
+
   
   h2 {
     margin-bottom: 20px;
@@ -66,3 +90,28 @@ input, button, label {
   th {
     padding: 10px;
   }
+
+  /* Media query for mobile devices */
+@media (max-width: 600px) {
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  form {
+    padding: 10px;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  th, td {
+    padding: 5px;
+  }
+}
