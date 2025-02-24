@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app) # Sallitaan CORS-rajapinnat
 
 # Tietokanta asetukset
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///contacts.db' # Tietokannan nimi
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://contacts_postgre_user:JYUcOLDQx3HTDik3xpFJSJgBR2JkzaiU@dpg-cuu2312j1k6c738hh6dg-a.frankfurt-postgres.render.com/contacts_postgre' # Tietokannan nimi
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Estetään turhat varoitukset
 
 db = SQLAlchemy(app) # Luodaan tietokanta
