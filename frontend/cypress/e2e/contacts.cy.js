@@ -19,9 +19,9 @@ describe('Contacts Page', () => {
     cy.get('.modal').should('be.visible');
 
     // Fill out the form
-    cy.get('#Name:]').type('john doe');
-    cy.get('#Email:').type('john@testi.com');
-    cy.get('#Phone:').type('1234567890');
+    cy.get('#name').type('john doe');
+    cy.get('#email').type('john@testi.com');
+    cy.get('#phone').type('1234567890');
 
     // Submit the form
     cy.get('form').submit();
