@@ -4,7 +4,7 @@ import React from "react";
 const ContactList = ({ contacts, updateContact, updateCallback }) => {
     const onDelete = async (id) => { // onDelete funktiolla poistetaan yhteystieto tietokannasta
         try { // Yritetään suorittaa seuraavaa
-            const url = `http://localhost:5000/api/contacts/${id}` // Tietokannan osoite
+            const url = `https://prj1-4s6i.onrender.com/api/contacts/${id}` // Tietokannan osoite
             await fetch(url, { method: 'DELETE' }) // fetch pyyntö
             updateCallback('Contact deleted successfully!') // Päivitetään yhteystiedot
         }

@@ -19,7 +19,7 @@ const ContactForm = ({ existingContact = {}, updateCallback}) => { // Propsit ex
             email: email,
             phone: phone
         }
-        const url = "https://prj1-4s6i.onrender.com" + (updating ? `/${existingContact.id}` : "") // Jos updating on true, niin lisätään id osoitteeseen
+        const url = "https://prj1-4s6i.onrender.com/api/contacts" + (updating ? `/${existingContact.id}` : "") // Jos updating on true, niin lisätään id osoitteeseen
         const options = { // Asetetaan fetch asetukset
             method: updating ? "PATCH" : "POST", // POST metodi
             headers: {

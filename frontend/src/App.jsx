@@ -18,7 +18,7 @@ function App() {
 
   // getContacts funktiolla haetaan yhteystiedot tietokannasta
   const getContacts = async () => {
-    const url = 'https://prj1-4s6i.onrender.com' // Tietokannan osoite
+    const url = 'https://prj1-4s6i.onrender.com/api/contacts' // Tietokannan osoite
     const response = await fetch(url) // fetch pyyntö
     const data = await response.json() // Muutetaan vastaus JSON muotoon
     setContacts(data) // Asetetaan yhteystiedot stateen
