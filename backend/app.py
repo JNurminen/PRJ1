@@ -3,6 +3,7 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 import os
 
+
 # Luodaan Flask-sovellus
 app = Flask(__name__)
 CORS(app) # Sallitaan CORS-rajapinnat
