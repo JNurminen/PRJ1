@@ -4,6 +4,7 @@ import { render, screen } from '@testing-library/react'
 //import userEvent from '@testing-library/user-event'
 import ContactList from './ContactList'
 
+// Testataan, että yhteystiedot renderöidään
 test('renders a list of contacts', () => {
     const contacts = [
         { id: 1, name: 'John Doe', email: 'John.Doe@gmail.com', phone: '0413125678' }

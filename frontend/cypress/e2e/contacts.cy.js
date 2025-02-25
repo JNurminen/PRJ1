@@ -1,5 +1,6 @@
 describe('Contacts Page', () => {
 
+  // ajetaan ennen jokaista testiä
   beforeEach(() => {
     cy.visit('http://localhost:5173/');
   });
@@ -12,6 +13,7 @@ describe('Contacts Page', () => {
     cy.contains('Actions');
   });
 
+  // Testataan, että yhteystiedot renderöidään
   it('should add a new contact', () => {
     cy.contains('Create Contact').click();
 

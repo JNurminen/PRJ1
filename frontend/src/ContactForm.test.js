@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import ContactForm from './ContactForm';
 
+// Testataan, että yhteystietolomake päivittyy
 test('updates contact form', () => {
     render(<ContactForm />);
     const nameInput = screen.getByLabelText(/Name:/i);
