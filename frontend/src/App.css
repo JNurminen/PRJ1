@@ -16,6 +16,7 @@
   padding: 20px;
   border: 1px solid #888;
   width: 45%;
+  max-width: 600px;
 }
 
 .close {
@@ -29,7 +30,7 @@
 /* Media query for mobile devices */
 @media (max-width: 600px) {
   .modal-content {
-    width: 90%;
+    width: 85%; /* Increase width to 90% for better fit on mobile */
     margin: 20% auto;
   }
 
@@ -53,9 +54,64 @@
 
   table {
     width: 100%;
+    border-collapse: collapse; /* Ensure table borders collapse */
   }
 
   th, td {
     padding: 5px;
+    word-wrap: break-word; /* Ensure long words break to fit within the cell */
+  }
+
+  th {
+    font-size: 14px; /* Adjust font size for table headers */
+  }
+
+  td {
+    font-size: 12px; /* Adjust font size for table data */
   }
 }
+
+/* Media query for very small devices */
+@media (max-width: 400px) {
+  .modal-content {
+    width: 80%; /* Increase width to 95% for very small devices */
+    margin: 20% auto;
+  }
+
+  .close {
+    font-size: 24px;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  form {
+    padding: 10px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse; /* Ensure table borders collapse */
+  }
+
+  th, td {
+    padding: 5px;
+    word-wrap: break-word; /* Ensure long words break to fit within the cell */
+  }
+
+  th {
+    font-size: 14px; /* Adjust font size for table headers */
+  }
+
+  td {
+    font-size: 12px; /* Adjust font size for table data */
+  }
+}
+
