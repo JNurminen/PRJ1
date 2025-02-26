@@ -6,8 +6,7 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0,0, 0.4);
-
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -60,14 +59,16 @@
   th, td {
     padding: 5px;
     word-wrap: break-word; /* Ensure long words break to fit within the cell */
+    overflow-wrap: break-word; /* Ensure long words break to fit within the cell */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
   }
 
   th {
-    font-size: 14px; /* Adjust font size for table headers */
+    font-size: 12px; /* Adjust font size for table headers */
   }
 
   td {
-    font-size: 12px; /* Adjust font size for table data */
+    font-size: 11px; /* Adjust font size for table data */
   }
 }
 
@@ -97,21 +98,22 @@
   }
 
   table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse; /* Ensure table borders collapse */
   }
 
   th, td {
-    padding: 5px;
+    padding: 3px;
     word-wrap: break-word; /* Ensure long words break to fit within the cell */
+    overflow-wrap: break-word; /* Ensure long words break to fit within the cell */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
   }
 
   th {
-    font-size: 14px; /* Adjust font size for table headers */
+    font-size: 10px; /* Adjust font size for table headers */
   }
 
   td {
     font-size: 12px; /* Adjust font size for table data */
   }
 }
-
