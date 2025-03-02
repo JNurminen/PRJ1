@@ -19,6 +19,12 @@ const ContactForm = ({ existingContact = {}, updateCallback}) => { // Propsit ex
         return;
         }
 
+        // Luodaan data objekti joka sisältää nimen, sähköpostin ja puhelinnumeron
+        const data = {
+            name: name,
+            email: email,
+            phone: phone
+        }
         const url = "https://prj1-4s6i.onrender.com/api/contacts" + (updating ? `/${existingContact.id}` : "") // Jos updating on true, niin lisätään id osoitteeseen
         const options = { // Asetetaan fetch asetukset
             method: updating ? "PATCH" : "POST", // POST metodi

@@ -75,35 +75,38 @@
 /* Media query for very small devices */
 @media (max-width: 400px) {
   .modal-content {
-    width: 80%; /* Increase width to 95% for very small devices */
-    margin: 20% auto;
+    width: 95%; /* Increase width to 95% for very small devices */
+    margin: 10% auto; /* Reduce margin for better fit */
+    padding: 10px; /* Reduce padding for better fit */
   }
 
   .close {
-    font-size: 24px;
+    font-size: 20px; /* Reduce font size for close button */
   }
 
   button {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 5px; /* Reduce margin for buttons */
+    padding: 5px; /* Reduce padding for buttons */
   }
 
   input {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 5px; /* Reduce margin for inputs */
+    padding: 5px; /* Reduce padding for inputs */
   }
 
   form {
-    padding: 10px;
+    padding: 5px; /* Reduce padding for form */
   }
 
   table {
-    width: 90%;
+    width: 100%; /* Ensure table takes full width */
     border-collapse: collapse; /* Ensure table borders collapse */
   }
 
   th, td {
-    padding: 3px;
+    padding: 3px; /* Reduce padding for table cells */
     word-wrap: break-word; /* Ensure long words break to fit within the cell */
     overflow-wrap: break-word; /* Ensure long words break to fit within the cell */
     text-overflow: ellipsis; /* Add ellipsis for overflow text */
@@ -114,6 +117,6 @@
   }
 
   td {
-    font-size: 12px; /* Adjust font size for table data */
+    font-size: 10px; /* Adjust font size for table data */
   }
 }
