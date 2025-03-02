@@ -14,11 +14,11 @@ const ContactForm = ({ existingContact = {}, updateCallback}) => { // Propsit ex
         e.preventDefault()
 
         // Tarkistetaan onko nimi, sähköposti ja puhelinnumero syötetty
-        const data = {
-            name: name,
-            email: email,
-            phone: phone
+        if (!name || !email || !phone) {
+        alert("Please fill out all fields.");
+        return;
         }
+
         const url = "https://prj1-4s6i.onrender.com/api/contacts" + (updating ? `/${existingContact.id}` : "") // Jos updating on true, niin lisätään id osoitteeseen
         const options = { // Asetetaan fetch asetukset
             method: updating ? "PATCH" : "POST", // POST metodi
